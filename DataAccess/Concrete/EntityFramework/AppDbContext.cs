@@ -15,7 +15,7 @@ namespace DataAccess.Concrete.EntityFramework
             optionsBuilder.UseSqlServer(DatabaseConfiguration.ConnectionString);
         }
 
-        public DbSet<Entities.Common.FileEntity> Files { get; set; }
+        public DbSet<FileEntity> FileEntities { get; set; }
         public DbSet<Test> Tests { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)

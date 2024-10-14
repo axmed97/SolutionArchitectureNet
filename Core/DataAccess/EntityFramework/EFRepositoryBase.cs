@@ -56,6 +56,18 @@ namespace Core.DataAccess.EntityFramework
             return await context.Set<TEntity>().FirstOrDefaultAsync(predicate);
         }
 
+        public TEntity GetById<T>(T id)
+        {
+            using var context = new TContext();
+            return context.Set<TEntity>().Find(id);
+        }
+
+        public async Task<TEntity> GetByIdAsync<T>(T id)
+        {
+            using var context = new TContext();
+            return await context.Set<TEntity>().FindAsync(id);
+        }
+
         public void Remove(TEntity entity)
         {
             using var context = new TContext();
