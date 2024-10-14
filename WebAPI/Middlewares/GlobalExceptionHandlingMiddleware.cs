@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Core.Utilities.Exceptions;
+using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Text.Json;
 
@@ -17,7 +18,7 @@ namespace WebAPI.Middlewares
             {
                 await next(context);
             }
-            catch (HttpRequestException ex)
+            catch (FluentValidationException ex)
             {
                 _logger.LogError(ex, ex.Message);
 

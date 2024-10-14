@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using Core.Utilities.Exceptions;
+using FluentValidation;
 using System.Net;
 
 namespace Core.CrossCuttingConcerns.Validation.FluenValidation
@@ -11,7 +12,7 @@ namespace Core.CrossCuttingConcerns.Validation.FluenValidation
             var result = validator.Validate(context);
             if (!result.IsValid)
             {
-                throw new HttpRequestException(message: result.ToString(), statusCode: HttpStatusCode.BadRequest, inner: new Exception("Validation Exception"));
+                throw new FluentValidationException(message: result.ToString(), statusCode: HttpStatusCode.BadRequest, inner: new Exception("Validation Exception"));
             }
         }
     }
